@@ -44,13 +44,15 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         addDoubleTap()
         addSwipe()
         
-        flowLayout.scrollDirection = .horizontal
-        
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
         collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         registerForPreviewing(with: self, sourceView: collectionView!)
         collectionContainer.addSubview(collectionView!)
         
@@ -132,7 +134,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     
     func retrieveUrls(forAnnotation annotation:DroppablePin, completion: @escaping (_ status: Bool) -> ()) {
         
-        Alamofire.request(flickerUrl(withAnotation: annotation, numberOfPhotos: 10)).responseJSON { (response) in
+        Alamofire.request(flickerUrl(withAnotation: annotation, numberOfPhotos: 20)).responseJSON { (response) in
             
             guard let json = response.result.value as? Dictionary<String, AnyObject> else {
                 debugPrint("Failed turned into json")
@@ -163,7 +165,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
             Alamofire.request(url).responseImage { (response) in
                 guard let image = response.result.value else { return }
                 self.imageArray.append(image)
-                self.progressLabel?.text = "\(self.imageArray.count)/10 Images Downloaded..."
+                self.progressLabel?.text = "\(self.imageArray.count)/20 Images Downloaded..."
                 
                 if self.imageArray.count == self.imageUrlArray.count {
                     completion(true)
@@ -287,7 +289,7 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: 80, height: 80)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
