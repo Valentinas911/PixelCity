@@ -39,7 +39,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeB-gJ-mPN">
-                                <rect key="frame" x="309" y="597" width="50" height="50"/>
+                                <rect key="frame" x="309" y="596" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="amF-D0-D2s"/>
                                     <constraint firstAttribute="height" constant="50" id="qcX-HF-dLQ"/>
@@ -69,13 +69,14 @@
                             <constraint firstItem="TOL-zD-4At" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RiW-ES-jQ8"/>
                             <constraint firstItem="TOL-zD-4At" firstAttribute="top" secondItem="EBu-zB-BA1" secondAttribute="bottom" id="Sfr-Kg-phK"/>
                             <constraint firstItem="TOL-zD-4At" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZYg-H8-9nL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jeB-gJ-mPN" secondAttribute="bottom" constant="20" id="htQ-wC-05I"/>
                             <constraint firstItem="4nC-FV-PKe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iWG-fT-tze"/>
+                            <constraint firstItem="TOL-zD-4At" firstAttribute="top" secondItem="jeB-gJ-mPN" secondAttribute="bottom" constant="20" id="z66-Qn-XzA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="collectionContainer" destination="TOL-zD-4At" id="HC3-vP-FQK"/>
+                        <outlet property="collectionContainerHeightConstraint" destination="Lpy-ZR-GNG" id="wyL-2M-EO2"/>
                         <outlet property="mapView" destination="EBu-zB-BA1" id="t3s-k0-rFm"/>
                     </connections>
                 </viewController>
