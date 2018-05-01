@@ -10,6 +10,18 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     
+    var imageView = UIImageView()
+    
+    var commonConstraints:[NSLayoutConstraint] = []
+    
+    override func awakeFromNib() {
+        setupView()
+        contentView.addSubview(imageView)
+        setupConstraints()
+        NSLayoutConstraint.activate(commonConstraints)
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -17,5 +29,26 @@ class PhotoCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("Init(coder:) has not been implemented")
     }
+    
+    func configureImage(image: UIImage!) {
+        imageView.image = image
+    }
+    
+    fileprivate func setupView() {
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    fileprivate func setupConstraints() {
+        commonConstraints = [
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+        ]
+    }
+    
+
     
 }

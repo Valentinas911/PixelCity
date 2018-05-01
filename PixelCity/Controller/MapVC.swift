@@ -48,7 +48,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         collectionContainer.addSubview(collectionView!)
         
     }
@@ -127,7 +127,6 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func retrieveUrls(forAnnotation annotation:DroppablePin, completion: @escaping (_ status: Bool) -> ()) {
-        imageUrlArray = []
         
         Alamofire.request(flickerUrl(withAnotation: annotation, numberOfPhotos: 10)).responseJSON { (response) in
             
@@ -156,8 +155,6 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func retrieveImages(completion: @escaping (_ status: Bool) -> ()) {
-        imageArray = []
-        
         for url in imageUrlArray {
             Alamofire.request(url).responseImage { (response) in
                 guard let image = response.result.value else { return }
@@ -209,6 +206,11 @@ extension MapVC: MKMapViewDelegate {
         removePin()
         removeSpinner()
         removeProgressLabel()
+        
+        imageUrlArray = []
+        imageArray = []
+        collectionView?.reloadData()
+        
         animateViewUp()
         addSpinner()
         addProgressLabel()
@@ -231,7 +233,7 @@ extension MapVC: MKMapViewDelegate {
                         self.removeProgressLabel()
                         
                         debugPrint("Finished! Reloading collection view")
-//                        self.collectionView?.reloadData()
+                        self.collectionView?.reloadData()
                     }
                 })
                 
@@ -274,8 +276,13 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollect
         // Later
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 40, height: 40)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell {
+            cell.configureImage(image: imageArray[indexPath.item])
             return cell
         } else {
             return UICollectionViewCell()
@@ -283,7 +290,7 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return imageArray.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
