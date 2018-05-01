@@ -15,6 +15,7 @@
 		524B24CF2097F5CA000A55E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524B24CE2097F5CA000A55E1 /* Assets.xcassets */; };
 		524B24D22097F5CA000A55E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524B24D02097F5CA000A55E1 /* LaunchScreen.storyboard */; };
 		52654F822098039000EFF852 /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52654F812098039000EFF852 /* DroppablePin.swift */; };
+		52654F8420980E9000EFF852 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52654F8320980E9000EFF852 /* PhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		524B24D12097F5CA000A55E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		524B24D32097F5CA000A55E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52654F812098039000EFF852 /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
+		52654F8320980E9000EFF852 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		805FF5A8DFFD30D012D4363E /* Pods_PixelCity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixelCity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				52654F812098039000EFF852 /* DroppablePin.swift */,
+				52654F8320980E9000EFF852 /* PhotoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52654F822098039000EFF852 /* DroppablePin.swift in Sources */,
+				52654F8420980E9000EFF852 /* PhotoCell.swift in Sources */,
 				524B24CA2097F5CA000A55E1 /* MapVC.swift in Sources */,
 				524B24C82097F5CA000A55E1 /* AppDelegate.swift in Sources */,
 				52135D832097F79D0084CC4E /* Constants.swift in Sources */,
