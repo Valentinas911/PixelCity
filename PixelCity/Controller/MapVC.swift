@@ -30,6 +30,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     let regionRadius: Double = 1000
     var screenSize = UIScreen.main.bounds
     var imageUrlArray = [String]()
+    var imageArray = [UIImage]()
     
     
     override func viewDidLoad() {
@@ -77,11 +78,14 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func animateViewDown() {
+        
+        cancelAllSessions()
         collectionContainerHeightConstraint.constant = 1
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+        
     }
     
     func addSpinner() {
@@ -125,7 +129,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     func retrieveUrls(forAnnotation annotation:DroppablePin, completion: @escaping (_ status: Bool) -> ()) {
         imageUrlArray = []
         
-        Alamofire.request(flickerUrl(withAnotation: annotation, numberOfPhotos: 40)).responseJSON { (response) in
+        Alamofire.request(flickerUrl(withAnotation: annotation, numberOfPhotos: 10)).responseJSON { (response) in
             
             guard let json = response.result.value as? Dictionary<String, AnyObject> else {
                 debugPrint("Failed turned into json")
@@ -143,14 +147,37 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
             }
             
             for photo in photosDictionaryArray {
-                let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
+                let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_m_d.jpg"
                 self.imageUrlArray.append(postUrl)
             }
             
             completion(true)
         }
+    }
+    
+    func retrieveImages(completion: @escaping (_ status: Bool) -> ()) {
+        imageArray = []
         
+        for url in imageUrlArray {
+            Alamofire.request(url).responseImage { (response) in
+                guard let image = response.result.value else { return }
+                self.imageArray.append(image)
+                self.progressLabel?.text = "\(self.imageArray.count)/10 Images Downloaded..."
+                
+                if self.imageArray.count == self.imageUrlArray.count {
+                    completion(true)
+                }
+                
+            }
+        }
         
+    }
+    
+    func cancelAllSessions() {
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+            sessionDataTask.forEach { $0.cancel() }
+            downloadData.forEach { $0.cancel() }
+        }
     }
     
 }
@@ -178,6 +205,7 @@ extension MapVC: MKMapViewDelegate {
     
     @objc func dropPin(sender: UITapGestureRecognizer) {
         
+        cancelAllSessions()
         removePin()
         removeSpinner()
         removeProgressLabel()
@@ -196,7 +224,17 @@ extension MapVC: MKMapViewDelegate {
         
         retrieveUrls(forAnnotation: annotation) { (success) in
             if success {
-                print(self.imageUrlArray)
+                
+                self.retrieveImages(completion: { (success) in
+                    if success {
+                        self.removeSpinner()
+                        self.removeProgressLabel()
+                        
+                        debugPrint("Finished! Reloading collection view")
+//                        self.collectionView?.reloadData()
+                    }
+                })
+                
             }
         }
         
