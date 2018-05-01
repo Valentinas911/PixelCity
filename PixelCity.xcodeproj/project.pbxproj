@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		149520EF078ABB065F514F39 /* Pods_PixelCity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805FF5A8DFFD30D012D4363E /* Pods_PixelCity.framework */; };
 		52135D832097F79D0084CC4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52135D822097F79D0084CC4E /* Constants.swift */; };
+		521B347D209854CE006EB471 /* PopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B347C209854CE006EB471 /* PopVC.swift */; };
 		524B24C82097F5CA000A55E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B24C72097F5CA000A55E1 /* AppDelegate.swift */; };
 		524B24CA2097F5CA000A55E1 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B24C92097F5CA000A55E1 /* MapVC.swift */; };
 		524B24CD2097F5CA000A55E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524B24CB2097F5CA000A55E1 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		0C16A99543776F63890A5D6A /* Pods-PixelCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixelCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PixelCity/Pods-PixelCity.debug.xcconfig"; sourceTree = "<group>"; };
 		3CF024985C917A1B4C8F2943 /* Pods-PixelCity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixelCity.release.xcconfig"; path = "Pods/Target Support Files/Pods-PixelCity/Pods-PixelCity.release.xcconfig"; sourceTree = "<group>"; };
 		52135D822097F79D0084CC4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		521B347C209854CE006EB471 /* PopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopVC.swift; sourceTree = "<group>"; };
 		524B24C42097F5CA000A55E1 /* PixelCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524B24C72097F5CA000A55E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524B24C92097F5CA000A55E1 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				524B24C92097F5CA000A55E1 /* MapVC.swift */,
+				521B347C209854CE006EB471 /* PopVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -78,13 +81,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		52135D812097F77B0084CC4E /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		524B24BB2097F5CA000A55E1 = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +105,6 @@
 				52135D7F2097F7490084CC4E /* Model */,
 				52135D7E2097F7370084CC4E /* View */,
 				52135D7D2097F72D0084CC4E /* Controller */,
-				52135D812097F77B0084CC4E /* Services */,
 				52135D802097F7750084CC4E /* Utilities */,
 				524B24CB2097F5CA000A55E1 /* Main.storyboard */,
 				524B24D02097F5CA000A55E1 /* LaunchScreen.storyboard */,
@@ -251,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521B347D209854CE006EB471 /* PopVC.swift in Sources */,
 				52654F822098039000EFF852 /* DroppablePin.swift in Sources */,
 				52654F8420980E9000EFF852 /* PhotoCell.swift in Sources */,
 				524B24CA2097F5CA000A55E1 /* MapVC.swift in Sources */,

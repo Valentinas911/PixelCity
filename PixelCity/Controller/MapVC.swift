@@ -44,11 +44,14 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         addDoubleTap()
         addSwipe()
         
+        flowLayout.scrollDirection = .horizontal
+        
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
         collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        registerForPreviewing(with: self, sourceView: collectionView!)
         collectionContainer.addSubview(collectionView!)
         
     }
@@ -112,6 +115,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         progressLabel?.textAlignment = .center
         progressLabel?.text = "Progress in Progress..."
         collectionView?.addSubview(progressLabel!)
+        
     }
     
     func removeProgressLabel() {
@@ -146,7 +150,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
             }
             
             for photo in photosDictionaryArray {
-                let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_m_d.jpg"
+                let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
                 self.imageUrlArray.append(postUrl)
             }
             
@@ -273,11 +277,17 @@ extension MapVC: CLLocationManagerDelegate {
 extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Later
+        
+        debugPrint("Selected",indexPath.item)
+        
+        guard let popVc = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else { return }
+        popVc.initData(forImage: imageArray[indexPath.item])
+        present(popVc, animated: true, completion: nil)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 40, height: 40)
+        return CGSize(width: 100, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -295,6 +305,25 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollect
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    
+}
+
+extension MapVC: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = collectionView?.indexPathForItem(at: location), let cell = collectionView?.cellForItem(at: indexPath) as? PhotoCell else { return nil }
+        guard let popVc = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else { return nil }
+        popVc.initData(forImage: imageArray[indexPath.item])
+        previewingContext.sourceRect = cell.contentView.frame
+        return popVc
+        
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
     }
     
     

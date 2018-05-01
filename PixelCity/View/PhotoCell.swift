@@ -15,10 +15,12 @@ class PhotoCell: UICollectionViewCell {
     var commonConstraints:[NSLayoutConstraint] = []
     
     override func awakeFromNib() {
-        setupView()
-        contentView.addSubview(imageView)
-        setupConstraints()
-        NSLayoutConstraint.activate(commonConstraints)
+//        super.awakeFromNib()
+//        debugPrint("Cell is waking up")
+//        setupView()
+//        contentView.addSubview(imageView)
+//        setupConstraints()
+//        NSLayoutConstraint.activate(commonConstraints)
         
     }
     
@@ -31,6 +33,11 @@ class PhotoCell: UICollectionViewCell {
     }
     
     func configureImage(image: UIImage!) {
+        debugPrint("Cell is waking up")
+        setupView()
+        contentView.addSubview(imageView)
+        setupConstraints()
+        NSLayoutConstraint.activate(commonConstraints)
         imageView.image = image
     }
     
