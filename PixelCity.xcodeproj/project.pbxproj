@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		149520EF078ABB065F514F39 /* Pods_PixelCity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805FF5A8DFFD30D012D4363E /* Pods_PixelCity.framework */; };
+		52135D832097F79D0084CC4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52135D822097F79D0084CC4E /* Constants.swift */; };
 		524B24C82097F5CA000A55E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B24C72097F5CA000A55E1 /* AppDelegate.swift */; };
-		524B24CA2097F5CA000A55E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B24C92097F5CA000A55E1 /* ViewController.swift */; };
+		524B24CA2097F5CA000A55E1 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B24C92097F5CA000A55E1 /* MapVC.swift */; };
 		524B24CD2097F5CA000A55E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524B24CB2097F5CA000A55E1 /* Main.storyboard */; };
 		524B24CF2097F5CA000A55E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524B24CE2097F5CA000A55E1 /* Assets.xcassets */; };
 		524B24D22097F5CA000A55E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524B24D02097F5CA000A55E1 /* LaunchScreen.storyboard */; };
@@ -18,9 +19,10 @@
 /* Begin PBXFileReference section */
 		0C16A99543776F63890A5D6A /* Pods-PixelCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixelCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PixelCity/Pods-PixelCity.debug.xcconfig"; sourceTree = "<group>"; };
 		3CF024985C917A1B4C8F2943 /* Pods-PixelCity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixelCity.release.xcconfig"; path = "Pods/Target Support Files/Pods-PixelCity/Pods-PixelCity.release.xcconfig"; sourceTree = "<group>"; };
+		52135D822097F79D0084CC4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		524B24C42097F5CA000A55E1 /* PixelCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524B24C72097F5CA000A55E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		524B24C92097F5CA000A55E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		524B24C92097F5CA000A55E1 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		524B24CC2097F5CA000A55E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		524B24CE2097F5CA000A55E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		524B24D12097F5CA000A55E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +42,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52135D7D2097F72D0084CC4E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				524B24C92097F5CA000A55E1 /* MapVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		52135D7E2097F7370084CC4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52135D7F2097F7490084CC4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		52135D802097F7750084CC4E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				52135D822097F79D0084CC4E /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		52135D812097F77B0084CC4E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		524B24BB2097F5CA000A55E1 = {
 			isa = PBXGroup;
 			children = (
@@ -61,11 +100,15 @@
 		524B24C62097F5CA000A55E1 /* PixelCity */ = {
 			isa = PBXGroup;
 			children = (
+				52135D7F2097F7490084CC4E /* Model */,
+				52135D7E2097F7370084CC4E /* View */,
+				52135D7D2097F72D0084CC4E /* Controller */,
+				52135D812097F77B0084CC4E /* Services */,
+				52135D802097F7750084CC4E /* Utilities */,
 				524B24C72097F5CA000A55E1 /* AppDelegate.swift */,
-				524B24C92097F5CA000A55E1 /* ViewController.swift */,
 				524B24CB2097F5CA000A55E1 /* Main.storyboard */,
-				524B24CE2097F5CA000A55E1 /* Assets.xcassets */,
 				524B24D02097F5CA000A55E1 /* LaunchScreen.storyboard */,
+				524B24CE2097F5CA000A55E1 /* Assets.xcassets */,
 				524B24D32097F5CA000A55E1 /* Info.plist */,
 			);
 			path = PixelCity;
@@ -202,8 +245,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				524B24CA2097F5CA000A55E1 /* ViewController.swift in Sources */,
+				524B24CA2097F5CA000A55E1 /* MapVC.swift in Sources */,
 				524B24C82097F5CA000A55E1 /* AppDelegate.swift in Sources */,
+				52135D832097F79D0084CC4E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +395,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q9ZM7295K6;
 				INFOPLIST_FILE = PixelCity/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.VMdev.PixelCity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -367,7 +414,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q9ZM7295K6;
 				INFOPLIST_FILE = PixelCity/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.VMdev.PixelCity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
