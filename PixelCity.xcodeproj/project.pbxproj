@@ -105,10 +105,10 @@
 				52135D7D2097F72D0084CC4E /* Controller */,
 				52135D812097F77B0084CC4E /* Services */,
 				52135D802097F7750084CC4E /* Utilities */,
-				524B24C72097F5CA000A55E1 /* AppDelegate.swift */,
 				524B24CB2097F5CA000A55E1 /* Main.storyboard */,
 				524B24D02097F5CA000A55E1 /* LaunchScreen.storyboard */,
 				524B24CE2097F5CA000A55E1 /* Assets.xcassets */,
+				524B24C72097F5CA000A55E1 /* AppDelegate.swift */,
 				524B24D32097F5CA000A55E1 /* Info.plist */,
 			);
 			path = PixelCity;
