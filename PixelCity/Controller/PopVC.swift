@@ -10,7 +10,7 @@ import UIKit
 
 class PopVC: UIViewController, UIGestureRecognizerDelegate {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     
     var image: UIImage!
     
@@ -23,10 +23,9 @@ class PopVC: UIViewController, UIGestureRecognizerDelegate {
             imageView.image = image
         }
         
-
     }
     
-    func addDoubeTap() {
+    fileprivate func addDoubeTap() {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(dismissViewController))
         doubleTap.numberOfTapsRequired = 2
         doubleTap.delegate = self
@@ -34,7 +33,7 @@ class PopVC: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    @objc func dismissViewController() {
+    @objc fileprivate func dismissViewController() {
         dismiss(animated: true, completion: nil)
     }
     
